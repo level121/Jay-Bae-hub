@@ -1,264 +1,112 @@
-body {
-  background-color: #5452a3;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  overflow:hidden
-}
+<!DOCTYPE html>
+   <html>
 
-.text_area {
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 25%;
-  height:60%;
-  border: 3px solid #121212;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.75);
-  position: absolute;
-  text-align: center;
-}
+     <head>
+       <title>Dashboard</title>
+        <link rel="icon" type="image/x-icon" href="https://du11hjcvx0uqb.cloudfront.net/dist/images/favicon-e10d657a73.ico">
+        <link rel="stylesheet" href="revamp_style.css">
+     </head>
 
-.text_area h1{
-  color: #E93030;
-}
+     <body>
+       <div id="sidebar" class="sidebar">
+         <a href="#" class="profile_pic_a" id="profile_pic_a">
+           <img class="profile_pic_img" id="profile_pic_img" src="https://i.pinimg.com/originals/47/5a/86/475a86177aeedacf8dc7f5e2b4eff61f.png">
+         </a>
+        <img src="https://static.thenounproject.com/png/446003-200.png" id="users_select" class="page_select">
+        <div class="selected_bar" id="users_bar"></div>
+        <img src="https://www.freeiconspng.com/uploads/controller-game-icon-10.png" id="games_select" class="page_select">
+        <div class="selected_bar_games" id="games_bar"></div>
+        <img src="https://static.thenounproject.com/png/2206184-200.png" id="chat_select" class="page_select">
+        <div class="selected_bar" id="chat_bar"></div>
+       </div>
+       <div class="main_game_page_body">
+        <div class="main_game_page_body" id="main_game_page">
+         <div id="name_welcome" class="name_welcome">
+           <h1>Hello Player</h1>
+           <p>Welcome to JAEBAEHUB</p>
+         </div>
+         <div id="hextris" class="game_holder">
+           <img src="https://ik.imagekit.io/sjyfpsp1n/portal/html5games/images/tmp/HextrisTeaser.jpg">
+           <p>
+             Hextris
+           </p>
+       <p>
+       
+       </p>
+       </div>
+       <div class="coming_soon_body" id="coming_soon_page" style="display:none">
+       <div class="text_area">
+       <h1>
+       Coming soon!
+       </h1>
+       <h3>
+       This page has yet to be completed, rest assured that our developers are hard at work to release it as soon as possible. Please check back at a later date.
+       </h3>
+       </div>
+       </div>
+       <script>
+         var banner
+         var cover
+         var description
+         var name
+         var game_url
+         var play = document.getElementById('play_game_page')
+         var main = document.getElementById('main_game_page')
+         var coming_soon = document.getElementById('coming_soon_page')
+         var back_arrow = document.getElementById('back_arrow')
+         var play_game = document.getElementById('play_button');
+         var game_bar = document.getElementById('games_bar');
+         var users_bar = document.getElementById('users_bar');
+         var chat_bar = document.getElementById('chat_bar');
+         var game_select = document.getElementById('games_select');
+         var users_select = document.getElementById('users_select');
+         var chat_select = document.getElementById('chat_select');
 
-.main_game_page_body {
-  width: 90.47619%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  overflow:scroll
-}
+         back_arrow.style.cursor = 'pointer';
+         back_arrow.onclick = function() {
+           play.style.display = 'none';
+           main.style.display = 'inline';
+         };
+         play_game.style.cursor = 'pointer';
+         play_game.onclick = function() {
+           window.location.replace(game_url)
+         };
+         users_select.style.cursor = 'pointer';
+         users_select.onclick = function() {
+           users_bar.style.display = 'inline-block'
+           chat_bar.style.display = 'none';
+           game_bar.style.display = 'none';
+           coming_soon.style.display = 'inline';
+           play.style.display = 'none';
+           main.style.display = 'none';
+         };
+         chat_select.style.cursor = 'pointer';
+         chat_select.onclick = function() {
+           users_bar.style.display = 'none'
+           chat_bar.style.display = 'inline-block';
+           game_bar.style.display = 'none';
+           coming_soon.style.display = 'inline';
+           play.style.display = 'none';
+           main.style.display = 'none';
+         };
+         game_select.style.cursor = 'pointer';
+         game_select.onclick = function() {
+           users_bar.style.display = 'none'
+           chat_bar.style.display = 'none';
+           game_bar.style.display = 'inline-block';
+           coming_soon.style.display = 'none';
+           play.style.display = 'none';
+           main.style.display = 'inline';
+         };
 
-.play_game_page_body {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-}
+         function set_properties(header_img, game_logo, description, game_name) {
+           document.getElementById("banner_img").src = header_img;
+           document.getElementById("game_cover").src = game_logo;
+           document.getElementById("description").innerHTML = description
+           document.getElementById("game_name").innerHTML = game_name
+         }
 
-.coming_soon_body {
-  width: 90.47619%;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-}
+       </script>
+     </body>
 
-.sidebar {
-  width: 9.52381%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  text-align: center;
-  position: absolute;
-  background-color: #1d1c42;
-}
-
-.name_welcome {
-    top: 4%;
-    left: 3.5%;
-    position: absolute;
-    line-height: 8px;
-}
-
-.branding {
-    top: 0.5%;
-    right: 3.5%;
-    position: absolute;
-    line-height: 10px;
-}
-
-.name_welcome h1 {
-    color: #FFFFAD;
-    font-size: 55px;
-}
-
-.game_holder {
-  top: 20.5%;
-  width: 15%;
-  height: 35%;
-  left: 5.5%;
-  padding-right: 3.5%;
-  float: left;
-  position: relative;
-  text-align: center;
-}
-
-.game_holder img {
-  top: 10%;
-  width: 85%;
-  height: 70%;
-  position: relative;
-}
-
-.game_holder p {
-  font-size: 23px;
-  bottom: -5%;
-  position: relative;
-}
-
-.name_welcome p {
-  font-size: 25px;
-}
-
-.profile_pic_a {
-  top: 4.56%;
-  left: 13.08%;
-  width: 71.95%;
-  aspect-ration: 1 / 1;
-  position: absolute;
-}
-
-.selected_bar {
-  background-color: #007CFF;
-  top: 33%;
-  height: 1%;
-  width: 70%;
-  display: none;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-
-.selected_bar_games {
-  background-color: #007CFF;
-  top: 33%;
-  height: 1%;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-.page_select {
-  top: 33.5%;
-  width: 71.95%;
-  position: relative;
-}
-
-.profile_pic_img {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0
-  position: relative;
-}
-
-.profile_pic_a {
-  top: 4.56%;
-  left: 13.08%;
-  width: 71.95%;
-  aspect-ration: 1 / 1;
-  position: absolute;
-}
-
-.profile_pic_img {
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: relative;
-}
-
-.banner_div {
-    top: 0;
-    right: 0;
-    height: 49.32%;
-    width: 90.47619%;
-    position: absolute;  
-}
-
-.banner_img {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-}
-
-.back_arrow {
-    height: 45px;
-    width: 45px;
-    left: 10%;
-    top: 3.5%;
-    position: absolute;
-}
-
-.back_arrow_img {
-    height: 100%;
-    width: 100%;
-}
-
-.credits {
-    left: 1%;
-    bottom: 0;
-    position: absolute;
-    font-size: 13px;
-}
-
-.bottom_div {
-    height: 50.68%;
-    width: 90.47619%;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-}
-
-.game_cover {
-    left: 2.56%;
-    top: 9.67%;
-    width: 17.25%;
-    position: absolute;
-}
-
-.game_play_div {
-    width: 26.85%
-    height: 31.51%;
-    top: 15.07%;
-    left: 22.17%;
-    position: absolute;
-}
-
-.game_play_div b{
-    font-size: 20px;
-}
-
-.description_div {
-    top: 12.5%;
-    right: 3%;
-    width: 37.51%;
-    height: 85.4%;
-    position: absolute;
-}
-
-.description_div b{
-    font-size: 30.5px;
-}
-
-.description_div_text_back {
-  border-radius: 25px;
-  background-color: #595959;
-  bottom: 10%;
-  width: 85%;
-  height: 70%;
-  position: absolute;
-}
-
-.description_div_text {
-  width: 80%;
-  height: 80%;
-  margin: auto;
-  font-size: 15.5px;
-}
+   </html>
